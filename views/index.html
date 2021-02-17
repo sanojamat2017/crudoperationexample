@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Prognoztech Pvt Ltd.</title>
+    </head>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            var email,password;
+            $('#submit').click(function(){
+                email=$('#email').val();
+                password=$('#password').val();
+
+                $.post('http://localhost:8000/login',{
+                    email:email,
+                    pass:password
+                },function(data){
+                    if(data=='done'){
+                        window.location.href="/admin"
+                    }
+                });
+            });
+        });
+    </script>
+    <body>
+        Enter Your EMail Id
+        <input type="text" id="email"><br>
+        <label>Enter Your Password</label>
+        <input type="password" id="password"><br>
+        <input type="button" value="Submit" id="submit">
+    </body>
+</html>
